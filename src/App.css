@@ -1,0 +1,144 @@
+@font-face {
+    font-family: 'icons';
+    src: url("/font/icons.eot");
+    src: url("/font/icons.eot?#iefix") format('embedded-opentype'),
+    url("/font/icons.woff") format('woff'),
+    url("/font/icons.ttf") format('truetype'),
+    url("/font/icons.svg#icons") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Let's set and reset some common styles */
+.random-quote-wrap {
+    width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+}
+
+.random-quote-wrap p {
+    margin: 0;
+    padding: 0;
+}
+
+.random-quote-wrap blockquote {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.random-quote-wrap cite {
+    font-style: normal;
+}
+
+body {
+    background-color: #f9f0e7;
+}
+
+.random-quote blockquote {
+    padding-top: 150px;
+}
+
+.random-quote blockquote:after {
+    font-family: 'icons';
+    background: rgba(235, 150, 108, 0.8);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    content: '\275e';
+    position: absolute;
+    font-size: 70px;
+    line-height: 130px;
+    text-align: center;
+    top: 0;
+    left: 50%;
+    margin-left: -65px;
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.random-quote blockquote:before {
+    content: '';
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border-left: 5px solid rgba(235, 150, 108, 0.1);
+    position: absolute;
+    top: 0;
+    left: -50px;
+    z-index: -1;
+}
+
+.random-quote blockquote p {
+    font-family: Baskerville, Georgia, serif;
+    font-size: 28px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.5);
+    display: inline;
+    color: rgba(235, 150, 108, 0.8);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+    line-height: 46px;
+    box-shadow: 0 -6px 0 rgba(235, 150, 108, 0.2);
+}
+
+.random-quote .random-quote-attribution {
+    text-align: right;
+}
+
+.random-quote .random-quote-author {
+    text-transform: uppercase;
+    font-size: 18px;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #d48158;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.random-quote cite a {
+    color: #d7aa94;
+    font-style: italic;
+}
+
+.random-quote cite a:hover {
+    color: #d48158;
+}
+
+.random-quote .random-quote-actions {
+    margin-top: 20px;
+    position: absolute;
+    top: 90px;
+    width: 85%;
+    left: 30px;
+}
+
+.random-quote-actions .random-quote-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-width: 0;
+    background: rgba(235, 150, 108, 0.8);
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    font-size: 35px;
+    display: block;
+}
+
+.random-quote-actions .random-quote-button:hover {
+    cursor: pointer;
+}
+
+.random-quote-actions .random-quote-button:focus {
+    outline:0;
+    color: rgb(255, 255, 255);
+}
+
+.random-quote-actions .random-quote-share {
+    background-image: url("/images/twitter_logo.png");
+    background-size: contain;
+    float: left;
+}
+
+.random-quote-actions .random-quote-get {
+    float: right;
+}
