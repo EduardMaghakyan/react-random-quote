@@ -46,17 +46,17 @@ class App extends Component {
       method: 'GET',
       headers: headers,
       mode: 'cors',
-      cache: 'default'
+      cache: 'no-cache'
     };
 
-    const myRequest = new Request("//quotes.stormconsultancy.co.uk/random.json", requestParams);
+    const myRequest = new Request("https://aitorp6.herokuapp.com/quotes/api/random", requestParams);
     fetch(myRequest)
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
-            quote: result.quote,
-            author: result.author
+            quote: result.quotes.quote,
+            author: result.quotes.author
           });
         },
         (error) => {
