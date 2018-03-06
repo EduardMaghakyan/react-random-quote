@@ -10,7 +10,7 @@ class App extends Component {
       author: ''
     };
     this.handleNew = this.handleNew.bind(this);
-    this.getTweetText = this.getTweetText.bind(this);
+    this.tweetQuote = this.tweetQuote.bind(this);
   }
 
   handleNew () {
@@ -27,7 +27,7 @@ class App extends Component {
           <p className="random-quote-author">{this.state.author}</p>
         </div>
         <div className="random-quote-actions">
-          <a className="random-quote-button random-quote-share" href={"https://twitter.com/intent/tweet?text=" + this.getTweetText()}></a>
+          <button className="random-quote-button random-quote-share" onClick={this.tweetQuote}></button>
           <button className="random-quote-button random-quote-get" onClick={this.handleNew}>
             &#8634;
           </button>
@@ -49,7 +49,7 @@ class App extends Component {
       cache: 'default'
     };
 
-    const myRequest = new Request("http://quotes.stormconsultancy.co.uk/random.json", requestParams);
+    const myRequest = new Request("//quotes.stormconsultancy.co.uk/random.json", requestParams);
     fetch(myRequest)
       .then(res => res.json())
       .then(
@@ -69,6 +69,10 @@ class App extends Component {
 
   getTweetText() {
     return this.state.quote + ' - ' + this.state.author;
+  }
+
+  tweetQuote() {
+    window.open("https://twitter.com/intent/tweet?text=" + this.getTweetText(), "_blank");
   }
 }
 
