@@ -1,10 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import fetchQuote from './Api';
 
-
 class App extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       quote: '',
@@ -21,13 +20,13 @@ class App extends Component {
     fetchQuote()
       .then(res => res.json())
       .then(
-        (result) => {
+        result => {
           this.setState({
             quote: result.quotes.quote,
             author: result.quotes.author
           });
         },
-        (error) => {
+        error => {
           this.setState({
             error
           });
@@ -40,7 +39,10 @@ class App extends Component {
   }
 
   tweetQuote() {
-    window.open("https://twitter.com/intent/tweet?text=" + this.getTweetText(), "_blank");
+    window.open(
+      'https://twitter.com/intent/tweet?text=' + this.getTweetText(),
+      '_blank'
+    );
   }
 
   render() {
@@ -53,8 +55,14 @@ class App extends Component {
           <p className="random-quote-author">{this.state.author}</p>
         </div>
         <div className="random-quote-actions">
-          <button className="random-quote-button random-quote-share" onClick={this.tweetQuote}></button>
-          <button className="random-quote-button random-quote-get" onClick={this.fetchSingleQuote.bind(this)}>
+          <button
+            className="random-quote-button random-quote-share"
+            onClick={this.tweetQuote}
+          />
+          <button
+            className="random-quote-button random-quote-get"
+            onClick={this.fetchSingleQuote.bind(this)}
+          >
             &#8634;
           </button>
         </div>
