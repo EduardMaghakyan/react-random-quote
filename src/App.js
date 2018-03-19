@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import fetchQuote from './Api';
 
 
 class App extends Component {
@@ -9,48 +10,15 @@ class App extends Component {
       quote: '',
       author: ''
     };
-    this.handleNew = this.handleNew.bind(this);
     this.tweetQuote = this.tweetQuote.bind(this);
   }
 
-  handleNew () {
-    this.fetchQuote()
-  }
-
-  render() {
-    return (
-      <div className="random-quote-wrap random-quote">
-        <blockquote>
-          <p>{this.state.quote}</p>
-        </blockquote>
-        <div className="random-quote-attribution">
-          <p className="random-quote-author">{this.state.author}</p>
-        </div>
-        <div className="random-quote-actions">
-          <button className="random-quote-button random-quote-share" onClick={this.tweetQuote}></button>
-          <button className="random-quote-button random-quote-get" onClick={this.handleNew}>
-            &#8634;
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   componentDidMount() {
-    this.fetchQuote()
+    this.fetchSingleQuote();
   }
 
-  fetchQuote() {
-    const headers = new Headers();
-    const requestParams = {
-      method: 'GET',
-      headers: headers,
-      mode: 'cors',
-      cache: 'no-cache'
-    };
-
-    const myRequest = new Request("https://aitorp6.herokuapp.com/quotes/api/random", requestParams);
-    fetch(myRequest)
+  fetchSingleQuote() {
+    fetchQuote()
       .then(res => res.json())
       .then(
         (result) => {
@@ -64,7 +32,7 @@ class App extends Component {
             error
           });
         }
-      )
+      );
   }
 
   getTweetText() {
@@ -73,6 +41,25 @@ class App extends Component {
 
   tweetQuote() {
     window.open("https://twitter.com/intent/tweet?text=" + this.getTweetText(), "_blank");
+  }
+
+  render() {
+    return (
+      <div className="random-quote-wrap random-quote">
+        <blockquote>
+          <p>{this.state.quote}</p>
+        </blockquote>
+        <div className="random-quote-attribution">
+          <p className="random-quote-author">{this.state.author}</p>
+        </div>
+        <div className="random-quote-actions">
+          <button className="random-quote-button random-quote-share" onClick={this.tweetQuote}></button>
+          <button className="random-quote-button random-quote-get" onClick={this.fetchSingleQuote.bind(this)}>
+            &#8634;
+          </button>
+        </div>
+      </div>
+    );
   }
 }
 
